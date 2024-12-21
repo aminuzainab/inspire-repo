@@ -1,0 +1,270 @@
+from curses import window
+import customtkinter as ctk
+from tkinter import messagebox
+from PIL import Image, ImageEnhance, ImageFilter
+from tkcalendar import Calendar
+from datetime import datetime
+
+def login():
+    username = entry_username.get()
+    password = entry_password.get()
+    print(f"Username: {username}\nPassword: {password}")
+    if username == 'admin' and password == 'admin':
+        show_dashboard()
+    else:
+        print('Invalid Credentials')
+
+def forgot_password():
+    print("Forgot Password button clicked!")
+
+def switch_to_signup():
+    login_frame.place_forget()
+    signup_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
+
+def signup():
+    new_username = entry_new_username.get()
+    new_password = entry_new_password.get()
+    print(f"New Username: {new_username}\nNew Password: {new_password}")
+
+def switch_to_login1():
+    signup_frame.place_forget()
+    login_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
+
+    
+def switch_to_login2():
+    overview_frame.place_forget()
+    login_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
+
+def switch_to_add_habit():
+    pass    
+
+def show_dashboard():
+    login_frame.place_forget()
+    overview_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
+
+ctk.set_appearance_mode('light')
+ctk.set_default_color_theme('blue')
+
+# Create the main window
+root = ctk.CTk()
+root.title("Habit Tracker")
+root.geometry("800x600")
+
+# Login Frame
+login_frame = ctk.CTkFrame(root, width=800, height=600, fg_color="transparent")
+login_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
+
+# Load image
+image_path = r"C:\Users\Zainab\Downloads\Image.jpeg"
+img = Image.open(image_path)
+enhancer = ImageEnhance.Contrast(img)
+img = enhancer.enhance(1.5)
+img = img.filter(ImageFilter.SHARPEN)
+
+photo = ctk.CTkImage(img, size=(1400, 1000))
+
+# Display image in CTkLabel
+bg_label = ctk.CTkLabel(login_frame, image=photo, text='')
+bg_label.place(relx=0, rely=0, relwidth=1, relheight=1)
+
+bg_label.image = photo
+
+new_frame = ctk.CTkFrame(
+    login_frame,
+    height=400,
+    fg_color='blue',
+    width=800,
+    corner_radius=10)
+new_frame.place(x=300, y=150)
+label_username = ctk.CTkLabel(
+    new_frame,
+    font=('Helvetica', 16),
+    text_color='black',
+    text="Username",
+    width=300)
+label_username.place(x=26, y=34)
+
+entry_username = ctk.CTkEntry(
+    new_frame,
+    height=40,
+    width=500)
+entry_username.place(x=140, y=65)
+
+label_password = ctk.CTkLabel(
+    new_frame,
+    text="Password",
+    font=('Helvetica', 16),
+    text_color='black',
+    height=40,
+    width=450)
+label_password.place(x=-50, y=120)
+
+entry_password = ctk.CTkEntry(
+    new_frame,
+    show="*",
+    height=40,
+    width=500)
+entry_password.place(x=140, y=160)
+
+btn_login = ctk.CTkButton(
+    new_frame,
+    text="Login",
+    text_color='black',
+    font=('Helvetica', 16),
+    height=40,
+    width=500,
+    hover_color='pink',
+    fg_color='light blue',
+    command=login)
+btn_login.place(x=140, y=250)
+
+btn_forgot_password = ctk.CTkButton(
+    new_frame,
+    text_color='black',
+    hover_color='red',
+    corner_radius=10,
+    font=('Helvetica', 16),
+    fg_color='blue',
+    height=50,
+    width=200,
+    text="Forgot Password",
+    command=forgot_password)
+btn_forgot_password.place(x=140, y=350)
+
+btn_switch_to_signup = ctk.CTkButton(
+    new_frame,
+    text_color='black',
+    corner_radius=10,
+    hover_color='red',
+    font=('Helvetica', 16),
+    fg_color='blue',
+    border_color='grey',
+    height=50,
+    text="Sign Up",
+    width=200,
+    command=switch_to_signup)
+btn_switch_to_signup.place(x=450, y=350)
+
+# Sign-Up Frame
+signup_frame = ctk.CTkFrame(root)
+signup_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
+signup_frame.place_forget()
+
+label_new_username = ctk.CTkLabel(
+    signup_frame,
+    width=150,
+    text="New Username")
+label_new_username.place(x=450, y=300)
+
+entry_new_username = ctk.CTkEntry(
+    signup_frame,
+    width=150)
+entry_new_username.place(x=690, y=300)
+
+label_new_password = ctk.CTkLabel(
+    signup_frame,
+    text="New Password",
+    width=30)
+label_new_password.place(x=450, y=350)
+
+entry_new_password = ctk.CTkEntry(
+    signup_frame,
+    show="*",
+    width=50)
+entry_new_password.place(x=690, y=350)
+
+btn_signup = ctk.CTkButton(
+    signup_frame,
+    text="Sign Up",
+    command=signup,
+    width=20)
+btn_signup.place(x=520, y=400)
+
+btn_switch_to_login = ctk.CTkButton(
+    signup_frame,
+    text="Back to Login",
+    command=switch_to_login1,
+    width=20)
+btn_switch_to_login.place(x=750, y=400)
+
+# Overview Frame
+overview_frame = ctk.CTkFrame(root)
+overview_frame.place(relx=0, rely=0, relwidth=1, relheight=1)
+overview_frame.place_forget()
+
+# Landing Frame
+landing_frame = ctk.CTkFrame(root, fg_color='#C1E1C1')
+
+def add_habit(entry, scrollable_frame):
+    habit = entry.get() 
+    if habit:
+        habit_label = ctk.CTkLabel(scrollable_frame, text=habit, width=250, height=30, anchor="w")
+        habit_label.pack(pady=5, padx=10)
+        entry.delete(0, ctk.END)
+    else:
+        messagebox.showwarning("Warning", "Please input a habit")
+
+sidebar = ctk.CTkFrame(landing_frame, width=350, height=900, fg_color='#FFFACD')
+sidebar.place(x=2, y=1)
+
+entry = ctk.CTkEntry(landing_frame, width=350, height=100)
+entry.place(x=450, y=300)
+
+add_button = ctk.CTkButton(landing_frame, text="Add Habit", command=lambda: add_habit(entry, scrollable_frame), width=300)
+add_button.place(x=480, y=420)
+
+scrollable_frame = ctk.CTkScrollableFrame(landing_frame, width=300, height=200)
+scrollable_frame.place(x=480, y=50)
+
+btn1 = ctk.CTkButton(
+    landing_frame,
+    height=30,
+    width = 200,
+    fg_color = "#FF7F50",
+    text='Dashboard')
+btn1.place(x=50, y=70)
+
+btn2 = ctk.CTkButton(
+    landing_frame,
+    height=30,
+    width = 200,
+    fg_color = "#FF7F50",
+    text='Total progress')
+btn2.place(x=50, y=140)
+
+btn3 = ctk.CTkButton(
+    landing_frame,
+    height=30,
+    width = 200,
+    fg_color = "#FF7F50",
+    text='Habit samples')
+btn3.place(x=50, y=210)
+
+btn4 = ctk.CTkButton(
+    landing_frame,
+    height=30,
+    width = 200,
+    fg_color = "#FF7F50",
+    text='Tips')
+btn4.place(x=50, y=280)
+
+btn5 = ctk.CTkButton(
+    landing_frame,
+    height=30,
+    width = 200,
+    fg_color = "#FF7F50",
+    text='Settings')
+btn5.place(x=50, y=350)
+
+btn6 = ctk.CTkButton(
+    landing_frame,
+    height=30,
+    width = 200,
+    fg_color = "#FF7F50",
+    text='Sign out',
+    command=switch_to_login2)
+btn6.place(x=50, y=420)
+
+sidebar2 = ctk.CTkFrame(landing_frame, width=600, height=900, fg_color='#FFFDD0')
+sidebar2.place(x=900, y=5)
+window.mainloop()
