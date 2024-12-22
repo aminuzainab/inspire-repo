@@ -10,9 +10,6 @@ Interactive star rating
 Dynamic display of a thank you page with the selected  rating
 User-friendly design
 
-### Screenshot
-![](./Screenshot_19-12-2024_142550_jpeg)
-
 ### Links
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
 - Live Site URL:(https://aminuzainab.github.io/probable-meme/)
