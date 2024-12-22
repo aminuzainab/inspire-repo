@@ -10,11 +10,6 @@ Interactive star rating
 Dynamic display of a thank you page with the selected  rating
 User-friendly design
 
-  - [Screenshot](#![alt text](Screenshot_19-12-2024_141152_.jpeg))
-  - [Links](#https://aminuzainab.github.io/probable-meme/)
-  - [Built with](#HTML,CSS and Javascript)
-  - [Author](Zainab Aminu Mikail)
-
 ### Screenshot
 ![](./Screenshot_19-12-2024_142550_jpeg)
 
