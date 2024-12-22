@@ -23,7 +23,7 @@ User-friendly design
 
 ### Links
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL:(https://aminuzainab.github.io/probable-meme/)
+- Live Site URL:(https://aminuzainab.github.io/inspire-repo/)
 
 ### Built with
 - Semantic HTML5 markup
