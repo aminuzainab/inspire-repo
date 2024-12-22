@@ -11,7 +11,7 @@ Dynamic display of a thank you page with the selected  rating
 User-friendly design
 
   - [Screenshot](#![alt text](Screenshot_19-12-2024_141152_.jpeg))
-  - [Links](https://aminuzainab.github.io/inspire-repo/)
+  - [Links](https://github.com/aminuzainab/inspire-repo)
   - [Built with](#HTML,CSS and Javascript)
   - [Author](Zainab Aminu Mikail)
   - [Acknowledgments](#acknowledgments)
@@ -20,7 +20,7 @@ User-friendly design
 ![](./Screenshot_19-12-2024_142550_jpeg)
 
 ### Links
-- Solution URL: (https://aminuzainab.github.io/inspire-repo/)
+- Solution URL: (https://github.com/aminuzainab/inspire-repo)
 - Live Site URL:(https://aminuzainab.github.io/inspire-repo/)
 
 ### Built with
